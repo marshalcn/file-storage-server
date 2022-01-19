@@ -1,0 +1,15 @@
+server:
+  port: 23108
+spring:
+  application:
+    name: file-storage-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: 123456
+    username: root
+    url: jdbc:mysql://localhost:3306/file_storage_server?serverTimezone=UTC&useUnicode=true&charcterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis-plus:
+  config-location:
+    - classpath: mapper/*.xml
+
