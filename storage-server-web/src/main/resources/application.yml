@@ -9,6 +9,11 @@ spring:
     username: root
     url: jdbc:mysql://localhost:3306/file_storage_server?serverTimezone=UTC&useUnicode=true&charcterEncoding=UTF-8
     type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: 10.0.66.101
+    port: 16380
+    password: a26608679
+    database: 3
 mybatis-plus:
   config-location:
     - classpath: mapper/*.xml

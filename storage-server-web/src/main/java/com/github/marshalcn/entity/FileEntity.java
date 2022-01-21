@@ -35,6 +35,8 @@ public class FileEntity implements Serializable {
     /** 识别码 */
     @TableField("identifier")
     private String identifier;
+    /** 存储位置 */
+    private Integer locate;
     /** 文件来源 */
     @TableField("`source`")
     private Integer source;
