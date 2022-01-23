@@ -30,8 +30,11 @@ public class SysUserEntity extends BaseEntity {
     @TableField("`login_name`")
     private String loginName;
     /** 密码 */
-    @TableField("`passwd`")
+    @TableField("`password`")
     private String passwd;
+    /*** 状态 */
+    @TableField("`status`")
+    private Integer status;
     /** 邮件 */
     @TableField("`mail`")
     private String mail;

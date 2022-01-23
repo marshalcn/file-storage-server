@@ -46,6 +46,7 @@ public class AuthenticationServiceConfigureAdapter extends AuthorizationServerCo
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
+
                 // 身份验证管理
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
