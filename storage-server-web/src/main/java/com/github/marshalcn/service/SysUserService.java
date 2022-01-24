@@ -5,4 +5,5 @@ import com.github.marshalcn.entity.SysUserEntity;
 
 public interface SysUserService extends IService<SysUserEntity> {
     SysUserEntity loadUserByUsername(String username);
+    Long countUser();
 }

@@ -4,7 +4,7 @@ spring:
   application:
     name: file-storage-server
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     password: snail123
     username: root
     url: jdbc:mysql://localhost:3306/file_storage_server?serverTimezone=UTC&useUnicode=true&charcterEncoding=UTF-8
@@ -14,6 +14,8 @@ spring:
     port: 16380
     password: a26608679
     database: 3
+  main:
+    allow-bean-definition-overriding: true
 mybatis-plus:
   config-location:
     - classpath: mapper/*.xml

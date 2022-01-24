@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> implements SysUserService {
     @Override
     public SysUserEntity loadUserByUsername(String username) {
-        return this.baseMapper.queryByUserName();
+        return this.baseMapper.queryByUserName(username);
+    }
+
+    @Override
+    public Long countUser() {
+        return this.baseMapper.countUser();
     }
 }

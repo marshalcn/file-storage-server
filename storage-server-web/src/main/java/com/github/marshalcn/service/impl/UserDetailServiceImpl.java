@@ -17,7 +17,17 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUserEntity user = sysUserService.loadUserByUsername(username);
-//        return new AuthUser(username, );
-        return null;
+        if (user == null){
+            return null;
+        }
+        return AuthUser.builder()
+                .username(user.getLoginName())
+                .password(user.getPasswd())
+                .salt(user.getSalt())
+                .disabled(user.getStatus() != 1)
+                .accountExpired(user.getStatus() == -1)
+                .credentialsExpired(false)
+                .accountLocked(user.getStatus() == 2)
+                .build();
     }
 }

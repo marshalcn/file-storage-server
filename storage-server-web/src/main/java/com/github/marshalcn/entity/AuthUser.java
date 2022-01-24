@@ -89,6 +89,10 @@ public class AuthUser implements UserDetails, CredentialsContainer {
         return this.authorities;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
     @Override
     public String getPassword() {
         return this.password;
@@ -174,12 +178,25 @@ public class AuthUser implements UserDetails, CredentialsContainer {
          * Populates the password. This attribute is required.
          *
          * @param password the password. Cannot be null.
-         * @return the {@link User.UserBuilder} for method chaining (i.e. to populate
+         * @return the {@link AuthUser.UserBuilder} for method chaining (i.e. to populate
          * additional attributes for this user)
          */
         public UserBuilder password(String password) {
             Assert.notNull(password, "password cannot be null");
             this.password = password;
+            return this;
+        }
+
+        /**
+         * Populates the salt. This attribute is required.
+         *
+         * @param salt the salt. Cannot be null.
+         * @return the {@link AuthUser.UserBuilder} for method chaining (i.e. to populate
+         * additional attributes for this user)
+         */
+        public UserBuilder salt(String salt) {
+            Assert.notNull(salt, "salt cannot be null");
+            this.salt = salt;
             return this;
         }
 
