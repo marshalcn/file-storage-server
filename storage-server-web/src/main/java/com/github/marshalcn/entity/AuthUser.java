@@ -120,7 +120,7 @@ public class AuthUser implements UserDetails, CredentialsContainer {
 
     @Override
     public boolean isEnabled() {
-        return this.isEnabled();
+        return this.enabled;
     }
 
     private static class AuthorityComparator implements Comparator<GrantedAuthority>,
@@ -339,8 +339,8 @@ public class AuthUser implements UserDetails, CredentialsContainer {
         }
 
         public UserDetails build() {
-            String encodedPassword = this.passwordEncoder.apply(username, password, salt);
-            return new AuthUser(username, encodedPassword, salt,  !disabled, !accountExpired,
+            String encodedPassword = this.passwordEncoder.apply(this.username, this.password, this.salt);
+            return new AuthUser(this.username, encodedPassword, this.salt,  !disabled, !accountExpired,
                     !credentialsExpired, !accountLocked, authorities);
         }
     }

@@ -26,17 +26,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    private BCryptPasswordEncoder passwordEncoder;
     @Resource
     private UserDetailsService userDetailsService;
+    @Resource
+    private UserAuthSuccessHandler userAuthSuccessHandler;
+    @Resource
+    private UserAuthenticationManager authenticationManager;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.
+//        auth.authenticationProvider(authenticationProvider);
+        auth.parentAuthenticationManager(authenticationManager);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/oauth/**")
-                .authorizeRequests()
-                .antMatchers("/oauth/**").permitAll()
+        http.authorizeRequests()
+                .and().formLogin()
+                .successHandler(userAuthSuccessHandler)
+//                .antMatchers("/login/**").permitAll()
+                .permitAll()
+//                .successForwardUrl("/home/hello")
+                .and().logout().permitAll()
                 .and()
                 .csrf().disable();
     }

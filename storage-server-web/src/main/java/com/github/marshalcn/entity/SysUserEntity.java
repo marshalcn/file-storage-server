@@ -19,7 +19,7 @@ public class SysUserEntity extends BaseEntity {
 
     /** id */
     @TableId(type = IdType.ASSIGN_UUID)
-    private String id;
+    private Long id;
     /** 用户名 */
     @TableField("`user_name`")
     private String userName;
@@ -31,7 +31,7 @@ public class SysUserEntity extends BaseEntity {
     private String loginName;
     /** 密码 */
     @TableField("`password`")
-    private String passwd;
+    private String password;
     /*** 状态 */
     @TableField("`status`")
     private Integer status;

@@ -15,7 +15,6 @@ import javax.annotation.Resource;
 
 @Component
 public class UserAuthenticationManager implements AuthenticationManager {
-
     @Resource
     private UserDetailsService userDetailsService;
     @Resource
@@ -24,7 +23,7 @@ public class UserAuthenticationManager implements AuthenticationManager {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
-        String presentedPassword = (String)authentication.getCredentials();
+        String presentedPassword = passwordEncoder.encode((String)authentication.getCredentials());
         AuthUser userDetails = (AuthUser) this.userDetailsService.loadUserByUsername(username);
         if (userDetails == null) {
             throw new BadCredentialsException("用户名不存在");

@@ -16,7 +16,7 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = -6347354223896103499L;
 
     /** 创建人id */
-    private String createUserId;
+    private Long createUserId;
     /** 创建时间 */
     private Date createTime;
     /** 更新时间 */
