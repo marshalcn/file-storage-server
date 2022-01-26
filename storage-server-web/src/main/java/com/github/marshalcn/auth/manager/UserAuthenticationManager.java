@@ -1,4 +1,4 @@
-package com.github.marshalcn.config;
+package com.github.marshalcn.auth.manager;
 
 import com.github.marshalcn.entity.AuthUser;
 import com.github.marshalcn.utils.SecureUtil;

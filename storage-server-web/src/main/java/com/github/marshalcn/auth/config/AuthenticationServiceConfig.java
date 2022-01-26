@@ -1,4 +1,4 @@
-package com.github.marshalcn.config;
+package com.github.marshalcn.auth.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -21,13 +21,12 @@ import javax.annotation.Resource;
  */
 @Configuration
 @EnableAuthorizationServer
-public class AuthenticationServiceConfigureAdapter extends AuthorizationServerConfigurerAdapter {
+public class AuthenticationServiceConfig extends AuthorizationServerConfigurerAdapter {
 
     @Resource
     private AuthenticationManager authenticationManager;
     @Resource
     private RedisConnectionFactory redisConnectionFactory;
-
     @Resource
     private UserDetailsService userDetailsService;
 

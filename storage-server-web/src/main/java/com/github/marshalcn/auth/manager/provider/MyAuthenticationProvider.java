@@ -1,4 +1,4 @@
-package com.github.marshalcn.config;
+package com.github.marshalcn.auth.manager.provider;
 
 import com.github.marshalcn.entity.AuthUser;
 import org.springframework.security.authentication.AuthenticationProvider;

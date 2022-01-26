@@ -1,7 +1,12 @@
-package com.github.marshalcn.config;
+package com.github.marshalcn.auth.config;
 
+import com.github.marshalcn.auth.handler.UserAuthSuccessHandler;
+import com.github.marshalcn.config.MD5PasswordEncoder;
+import com.github.marshalcn.auth.manager.provider.MyAuthenticationProvider;
+import com.github.marshalcn.auth.manager.UserAuthenticationManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,10 +35,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserAuthSuccessHandler userAuthSuccessHandler;
     @Resource
     private UserAuthenticationManager authenticationManager;
+    @Resource
+    private MyAuthenticationProvider authenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.authenticationProvider(authenticationProvider);
+        auth.authenticationProvider(authenticationProvider);
+        auth.authenticationProvider(new DaoAuthenticationProvider());
         auth.parentAuthenticationManager(authenticationManager);
     }
 
